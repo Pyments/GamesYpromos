@@ -8,8 +8,7 @@ Uma aplicação CLI simples em Ruby que busca jogos grátis e promoções de div
 - Buscar promoções por plataforma
 - Buscar jogos específicos por nome
 - Armazenar dados no PostgreSQL automaticamente
-- Interface CLI simples e intuitiva em português
-
+  
 ## Requisitos
 
 - Ruby 3.1.0 ou superior
