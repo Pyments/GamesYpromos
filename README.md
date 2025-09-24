@@ -1,39 +1,64 @@
 # GamesYpromos
 
-TODO: Delete this and the text below, and describe your gem
+Uma aplicação CLI simples em Ruby que busca jogos grátis e promoções de diversas plataformas usando a API do GamerPower e armazena os dados em PostgreSQL.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/GamesYpromos`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Funcionalidades
 
-## Installation
+- Buscar jogos grátis por plataforma
+- Buscar promoções por plataforma
+- Buscar jogos específicos por nome
+- Armazenar dados no PostgreSQL automaticamente
+- Interface CLI simples e intuitiva em português
 
-```bash
-bundle add GamesYpromos
-```
+## Requisitos
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+- Ruby 3.1.0 ou superior
+- PostgreSQL
+- Bundler gem
 
-```bash
-gem install GamesYpromos
-```
+## Configuração
 
-## Usage
+1. **Instalar dependências:**
+   ```bash
+   bundle install
+   ```
 
-TODO: Write usage instructions here
+2. **Configurar banco de dados:**
+   ```bash
+   # Criar usuário e banco PostgreSQL
+   sudo -u postgres createuser gamesypromos
+   sudo -u postgres createdb gamesypromos -O gamesypromos
+   sudo -u postgres psql -c "ALTER USER gamesypromos PASSWORD 'gamesypromos';"
+   
+   # Criar tabela
+   psql -U gamesypromos -d gamesypromos -f db/schema.sql
+   ```
 
-## Development
+3. **Executar a aplicação:**
+   ```bash
+   ./bin/gamesypromos
+   ```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Uso
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+A CLI oferece três opções principais:
 
-## Contributing
+1. **Jogos grátis por plataforma** - Busca jogos gratuitos filtrados por plataforma
+2. **Promoções por plataforma** - Busca todas as promoções/descontos por plataforma
+3. **Buscar jogo** - Busca jogos específicos por nome
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/GamesYpromos. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/GamesYpromos/blob/master/CODE_OF_CONDUCT.md).
+Todos os dados obtidos são automaticamente salvos no banco PostgreSQL.
 
-## License
+## Plataformas Suportadas
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+- PC (Steam, Epic Games Store, Ubisoft, GOG, Itch.io)
+- PlayStation (PS4, PS5)
+- Xbox (Xbox One, Xbox Series X/S, Xbox 360)
+- Nintendo Switch
+- Mobile (Android, iOS)
+- VR
+- Battle.net, Origin, DRM-free
 
-## Code of Conduct
+## Licença
 
-Everyone interacting in the GamesYpromos project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/GamesYpromos/blob/master/CODE_OF_CONDUCT.md).
+MIT License
